@@ -1,3 +1,4 @@
+// Node.js で GraphQL サーバーを実装するためのライブラリ
 const { ApolloServer, gql } = require("apollo-server");
 
 const comedian = [
@@ -13,6 +14,7 @@ const comedian = [
 	},
 ];
 
+// 型(Schema)定義
 const typeDefs = gql`
 	type Comedian {
 		combinationName: String
@@ -20,11 +22,13 @@ const typeDefs = gql`
 		boke: String
 	}
 
+	# 型を元にお問い合わせ
 	type Query {
-		comedian: [Comedian]
+		test: [Comedian]
 	}
 `;
 
+// 実際にお問い合わせが来た時にどのデータを返すかを定義
 const resolvers = {
 	Query: {
 		test: () => comedian,
